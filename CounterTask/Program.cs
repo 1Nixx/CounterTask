@@ -1,18 +1,28 @@
+using CounterTask.Data;
+using CounterTask.Interfaces;
+using CounterTask.Middleware;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+var services = builder.Services;
 
-var sevices = builder.Services;
-
-sevices.AddControllers();
+services.AddSingleton(typeof(CounterContext));
+services.AddScoped<ICounterRepository, CounterRepository>();
+services.AddCors(opt =>
+	{
+		opt.AddPolicy("CorsPolicy", builder =>
+			builder.AllowAnyOrigin()
+			.AllowAnyMethod()
+			.AllowAnyHeader());
+	});
+services.AddControllers();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
+app.UseCors("CorsPolicy");
 
 app.MapControllers();
 
