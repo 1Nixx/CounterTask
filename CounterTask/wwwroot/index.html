@@ -3,37 +3,42 @@
 <head>
     <meta charset="utf-8" />
     <title>Задание</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css" />
 </head>
 <body class="bg-dark">
     <div class="d-flex flex-column align-items-center">
         <div class="title-text text-light m-4 ">
-            <h3 class="m-0">Тестовое задание</h3>
+            <h1 class="m-0">Тестовое задание</h1>
         </div>
 
         <div class="line"></div>
 
-        <div class="order-info mt-4 p-4 bg-white rounded-4 d-flex flex-column align-items-center ">
+        <div class="main-form mt-4 mb-4 p-3 bg-white rounded-4 d-flex flex-column align-items-center">
 
-            <h4>Введите интервал запросов</h4>
+            <h4 class="head-label">Введите интервал запросов</h4>
 
-            <input type="text" class="h4 w-75 pe-2 ps-2 m-2 rounded-2" disabled/>
+            <input type="text" class="h4 w-75 pe-2 ps-2 m-2 rounded-2"/>
 
-            <div class="mt-2 w-75 d-flex justify-content-between">
-                <button class="form-btn me-2 w-100 rounded-2 h6 bg-dark border-0 rounded-2 text-light">Начать</button>
-                <button class="form-btn ms-2 w-100 rounded-2 h6 bg-dark border-0 rounded-2 text-light" disabled>Закончить</button>
+            <div class="mt-2 w-75 d-flex justify-content-between flex-sm-row flex-column">
+                <button class="form-btn me-0 me-sm-2 w-100 rounded-2 h6 bg-dark border-0 rounded-2 text-light">Начать</button>
+                <button class="form-btn ms-0 ms-sm-2 w-100 rounded-2 h6 bg-dark border-0 rounded-2 text-light" disabled>Закончить</button>
             </div>
 
             <div class="spinner-border mt-4" >
                 <span class="visually-hidden">Загрузка...</span>
             </div>
 
+            <label class="visually-hidden text-danger">Ошибка</label>
+
             <div class="server-text mt-4 h4">
                 <p>Значение на сервере: <span id="serverValue">34567</span></p>
             </div>
         </div>
     </div>
+
+
     <script src="lib/signalr/dist/browser/signalr.min.js"></script>
     <script>
         const hubConnection = new signalR.HubConnectionBuilder()

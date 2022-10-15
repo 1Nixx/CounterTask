@@ -8,10 +8,27 @@
 	border-radius: 10px;
 	background: red;
 }
-	
-.order-info {
-	width: 40%;
+
+.main-form, .server-text {
 	font-family: Bahnschrift, sans-serif;
+}
+
+@media (max-width: 900px) {
+	.main-form {
+		width: 75% !important;
+	}
+}
+
+@media (min-width: 900px) {
+	.main-form {
+		width: 40% !important;
+	}
+}
+
+@media (max-width: 450px) {
+	.head-label, .server-text {
+		font-size: 0.8em !important;
+	}	
 }
 
 .form-btn {
@@ -27,8 +44,3 @@
 		color: rgba(118, 118, 118, 0.3) !important;
 		background-color: rgba(118, 118, 118, 0.3) !important;
 	}
-
-.server-text {
-	font-family: Bahnschrift, serif;
-
-}
