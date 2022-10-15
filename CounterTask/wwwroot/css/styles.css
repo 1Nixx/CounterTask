@@ -1,0 +1,34 @@
+﻿.title-text {
+	font-family: Bahnschrift, serif;
+}
+
+.line {
+	width: 90%;
+	border: 4px solid red;	
+	border-radius: 10px;
+	background: red;
+}
+	
+.order-info {
+	width: 40%;
+	font-family: Bahnschrift, sans-serif;
+}
+
+.form-btn {
+	height: 40px;
+}
+
+	.form-btn:hover {
+		background: red !important;
+	}
+
+	.form-btn:disabled,
+	.form-btn[disabled] {
+		color: rgba(118, 118, 118, 0.3) !important;
+		background-color: rgba(118, 118, 118, 0.3) !important;
+	}
+
+.server-text {
+	font-family: Bahnschrift, serif;
+
+}
