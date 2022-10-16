@@ -5,7 +5,7 @@ namespace CounterTask.Data
 	public class CounterRepository : ICounterRepository
 	{
 		private readonly CounterContext _context;
-
+		
 		public CounterRepository(CounterContext context)
 		{
 			_context = context;	
@@ -18,11 +18,20 @@ namespace CounterTask.Data
 
 		public void Increase(int value)
 		{
-			checked
+			Monitor.Enter(_context);
+
+			try
 			{
-				//Interlocked.Add(ref _context.Counter, value);
-				_context.Counter += value;
+				checked
+				{
+					_context.Counter += value;
+				}
 			}
+			finally
+			{
+				Monitor.Exit(_context);
+			}
+
 		}
 	}
 }

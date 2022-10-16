@@ -22,7 +22,6 @@ document.getElementById("startBtn").addEventListener("click", () => {
 
 document.getElementById("stopBtn").addEventListener("click", () => {
     DisableReqest();
-
     StopState();
 });
 
