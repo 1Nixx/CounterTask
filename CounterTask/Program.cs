@@ -12,9 +12,10 @@ services.AddScoped<ICounterRepository, CounterRepository>();
 services.AddCors(opt =>
 	{
 		opt.AddPolicy("CorsPolicy", builder =>
-			builder.AllowAnyOrigin()
-			.AllowAnyMethod()
-			.AllowAnyHeader());
+			builder.AllowAnyHeader()
+				   .AllowAnyMethod()
+				   .SetIsOriginAllowed((host) => true)
+				   .AllowCredentials());
 	});
 services.AddSignalR();
 services.AddControllers();
@@ -30,10 +31,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseMiddleware<ExceptionMiddleware>();
 
-app.UseDefaultFiles();
 app.UseStaticFiles();
 
 app.UseHttpsRedirection();
+
 app.UseCors("CorsPolicy");
 
 app.MapHub<CounterHub>("/counterhub");

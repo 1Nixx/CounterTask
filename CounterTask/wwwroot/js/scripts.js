@@ -1,12 +1,14 @@
 ﻿const hubConnection = new signalR.HubConnectionBuilder()
-    .withUrl("/counterhub")
+    .withUrl("https://localhost:7001/counterhub")
     .build();
 
 hubConnection.on("CounterValue", (data) => {
     document.getElementById("serverValue").innerHTML = data;
 });
 
-hubConnection.start();
+hubConnection.start().catch(() => {
+    ShowErrorMessage("Невозможно подключиться к серверу")
+});
 
 var intervalId;
 const randomMinBorder = 1;
