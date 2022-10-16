@@ -13,12 +13,16 @@ namespace CounterTask.Data
 
 		public int Get()
 		{
-			throw new NotImplementedException();
+			return _context.Counter;
 		}
 
 		public void Increase(int value)
 		{
-			throw new NotImplementedException();
+			checked
+			{
+				//Interlocked.Add(ref _context.Counter, value);
+				_context.Counter += value;
+			}
 		}
 	}
 }

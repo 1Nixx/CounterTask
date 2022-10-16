@@ -31,6 +31,17 @@
 	}	
 }
 
+.inputData::-webkit-outer-spin-button,
+.inputData::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.inputData[type=number] {
+	-moz-appearance: textfield;
+}
+
+
 .form-btn {
 	height: 40px;
 }

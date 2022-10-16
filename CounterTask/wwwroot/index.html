@@ -19,47 +19,27 @@
 
             <h4 class="head-label">Введите интервал запросов</h4>
 
-            <input type="text" class="h4 w-75 pe-2 ps-2 m-2 rounded-2"/>
+            <input id="inputInterval" type="number" class="inputData h4 w-75 pe-2 ps-2 m-2 rounded-2" placeholder="Введите число"/>
 
             <div class="mt-2 w-75 d-flex justify-content-between flex-sm-row flex-column">
-                <button class="form-btn me-0 me-sm-2 w-100 rounded-2 h6 bg-dark border-0 rounded-2 text-light">Начать</button>
-                <button class="form-btn ms-0 ms-sm-2 w-100 rounded-2 h6 bg-dark border-0 rounded-2 text-light" disabled>Закончить</button>
+                <button id="startBtn" class="form-btn me-0 me-sm-2 w-100 rounded-2 h6 bg-dark border-0 rounded-2 text-light" disabled="disabled">Начать</button>
+                <button id="stopBtn" class="form-btn ms-0 ms-sm-2 w-100 rounded-2 h6 bg-dark border-0 rounded-2 text-light" disabled="disabled">Закончить</button>
             </div>
 
-            <div class="spinner-border mt-4" >
+            <div class="spinner-border mt-4 d-none" id="loading">
                 <span class="visually-hidden">Загрузка...</span>
             </div>
 
-            <label class="visually-hidden text-danger">Ошибка</label>
+            <label class="visually-hidden text-danger m-2" id="lbErrorMsg">Ошибка</label>
 
             <div class="server-text mt-4 h4">
-                <p>Значение на сервере: <span id="serverValue">34567</span></p>
+                <p>Значение на сервере: <span id="serverValue"></span></p>
             </div>
         </div>
     </div>
 
 
     <script src="lib/signalr/dist/browser/signalr.min.js"></script>
-    <script>
-        const hubConnection = new signalR.HubConnectionBuilder()
-            .withUrl("/counterhub")
-            .build();
-
-        hubConnection.on("CounterValue", function (data) {
-            document.getElementById("data").innerHTML = data;
-        });
-
-        document.getElementById("sendBtn").addEventListener("click", function (e) {
-            if (hubConnection.state === signalR.HubConnectionState.Disconnected) {
-                connection.start();
-            }
-            hubConnection.invoke("IncreaseCounter", 5)
-                .catch(ex => {
-                    console.log(ex + "asdas");
-                });
-        });
-
-        hubConnection.start();
-    </script>
+    <script src="js/scripts.js"></script>
 </body>
 </html>

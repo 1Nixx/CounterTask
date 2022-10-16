@@ -11,6 +11,7 @@ namespace CounterTask.Middleware
 		public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
 		{
 			_next = next;
+			_logger = logger;
 		}
 
 		public async Task Invoke(HttpContext context)
@@ -40,11 +41,9 @@ namespace CounterTask.Middleware
 					statusCode = HttpStatusCode.NotFound;
 					errorDetails.ErrorType = "Not Found";
 					break;
-				case BadHttpRequestException badRequestException:
+				case BadHttpRequestException:
 					statusCode = HttpStatusCode.BadRequest;
 					errorDetails.ErrorType = "Bad Request";
-					break;
-				default:
 					break;
 			}
 
