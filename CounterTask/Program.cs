@@ -37,6 +37,7 @@ app.UseHttpsRedirection();
 
 app.UseCors("CorsPolicy");
 
+
 app.MapHub<CounterHub>("/counterhub");
 app.MapControllers();
 
