@@ -9,8 +9,7 @@ var services = builder.Services;
 
 services.AddSingleton(typeof(CounterContext));
 services.AddScoped<ICounterRepository, CounterRepository>();
-services.AddCors(opt =>
-	{
+services.AddCors(opt =>	{
 		opt.AddPolicy("CorsPolicy", builder =>
 			builder.AllowAnyHeader()
 				   .AllowAnyMethod()
