@@ -17,6 +17,7 @@ services.AddCors(opt =>
 				   .SetIsOriginAllowed((host) => true)
 				   .AllowCredentials());
 	});
+
 services.AddSignalR();
 services.AddControllers();
 services.AddSwaggerGen();
